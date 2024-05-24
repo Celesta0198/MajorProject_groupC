@@ -1,19 +1,48 @@
+function randomColor(){
+  return color(random(255),random(255),random(255));
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
+  background(255);
+  
+  noLoop();
 }
 
+function cicleRing(){
+  let centerX = width / 2;
+  let centerY = height / 2;
+  let radius = 200;
+  let numRects = 25; 
+  let rectWidth = 30;
+  let rectHeight = 30;
+  let cornerRadius = 10;
+  fill(randomColor());
+  stroke(0,0);
+  for (let i = 0; i < numRects; i++) {
+    let angle = TWO_PI / numRects * i;
+    let x = centerX + cos(angle) * radius;
+    let y = centerY + sin(angle) * radius;
+    
+    push();
+    translate(x, y);
+    rotate(angle);
+    rectMode(CENTER);
+    rect(0, 0, rectWidth, rectHeight, cornerRadius);
+    pop();
+}
+}
 function draw() {
-<<<<<<< Updated upstream
-  background(220, 155);
-=======
-  background(220, 155, 120);
->>>>>>> Stashed changes
-}
 
-function windowResized(){
- resizeCanvas(windowWidth, windowHeight);
+  let centerX = width / 2;
+  let centerY = height / 2;
+  fill(randomColor());
+  stroke(randomColor());
+  strokeWeight(random(5,20));
+  circle(centerX,centerY,800);
+  fill(randomColor());
+  ellipse(centerX,centerY,300,300);
+  
+  cicleRing();
 }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
