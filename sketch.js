@@ -18,20 +18,27 @@ function cicleRing(){
   let rectWidth = 30;
   let rectHeight = 30;
   let cornerRadius = 10;
+  let layerNum = 5;
   fill(randomColor());
   stroke(0,0);
-  for (let i = 0; i < numRects; i++) {
-    let angle = TWO_PI / numRects * i;
-    let x = centerX + cos(angle) * radius;
-    let y = centerY + sin(angle) * radius;
-    
-    push();
-    translate(x, y);
-    rotate(angle);
-    rectMode(CENTER);
-    rect(0, 0, rectWidth, rectHeight, cornerRadius);
-    pop();
-}
+  for(let a = 0; a < layerNum; a++){
+
+    for (let i = 0; i < numRects; i++) {
+      let angle = TWO_PI / numRects * i;
+      let x = centerX + cos(angle) * radius;
+      let y = centerY + sin(angle) * radius;
+      
+      push();
+      translate(x, y);
+      rotate(angle);
+      rectMode(CENTER);
+      rect(0, 0, rectWidth, rectHeight, cornerRadius);
+      pop();
+  }
+   radius = radius + 40;
+   numRects = numRects +10;
+  }
+  
 }
 function draw() {
 
