@@ -40,6 +40,23 @@ function cicleRing(){
   }
   
 }
+
+function drawConcentricCircles(x, y, maxDiameter, numCircles) {
+  let step = maxDiameter / numCircles;
+  for (let i = 0; i < numCircles; i++) {
+    let diameter = maxDiameter - i * step;
+    let offsetX = random(-5, 5);
+    let offsetY = random(-5, 5);
+    fill(randomColor());
+    stroke(randomColor());
+    strokeWeight(2);
+    ellipse(x + offsetX, y + offsetY, diameter, diameter);
+  }
+}
+
+
+
+
 function draw() {
 
   let centerX = width / 2;
@@ -50,6 +67,8 @@ function draw() {
   circle(centerX,centerY,800);
   fill(randomColor());
   ellipse(centerX,centerY,300,300);
-  
+  drawConcentricCircles(centerX, centerY, 300, 10);
+
+ 
   cicleRing();
 }
