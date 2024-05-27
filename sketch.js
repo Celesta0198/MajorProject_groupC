@@ -192,6 +192,19 @@ function drawPinkCurve(centerX, centerY, radius) {
   bezier(centerX, centerY, cp1x, cp1y, cp1x, cp1y, x1, y1);
 }
 
+function drawChain(centerX, centerY, chainRadius, numLinks) {
+  let angleStep = TWO_PI / numLinks;
+  for (let i = 0; i < numLinks; i++) {
+    let angle = i * angleStep;
+    let x = centerX + cos(angle) * chainRadius;
+    let y = centerY + sin(angle) * chainRadius;
+    fill(255);
+    stroke(0);
+    strokeWeight(2.5);
+    ellipse(x+1, y+1, 6, 6); 
+  }
+}
+
 function draw() {
   background(0, 84, 121);
   let Size = minWindowSize();
@@ -204,6 +217,7 @@ function draw() {
     strokeWeight(random(1,4));
     circle(x,y,140);
   
+    drawChain(x, y, 80, 20); 
     drawConcentricCircles(x, y, 60, 8);
 
  
@@ -218,7 +232,7 @@ function draw() {
     let x = circle1Xs[i];
     let y = circle1Ys[i];
     Circle1(x,y);
-    
+    drawChain(x, y, 75, 15); 
     
   if (random() < 0.2) {
     drawPinkCurve(x, y, 75);
@@ -229,7 +243,7 @@ function draw() {
     let x = circle2Xs[i];
     let y = circle2Ys[i];
     Circle2(x,y);
-    
+    drawChain(x, y, 75, 20); 
     
   if (random() < 0.2) {
     drawPinkCurve(x, y, 75);
@@ -240,7 +254,7 @@ function draw() {
     let x = circle3Xs[i];
     let y = circle3Ys[i];
     fill(color(random(180,255),random(180,255),random(180,255)));
-    
+    drawChain(x, y, 75, 15); 
     circle(x,y,140);
     Circle3(x,y);
     fill(randomColor());
